@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class main {
@@ -21,34 +22,30 @@ public class main {
         return result;
     }
 
+    private static void calculator(String[] line) {
+        List<String> numList = new ArrayList<>();
+        List<String> opList = new ArrayList<>();
+
+        for (int i=0; i<line.length; i+=2) {
+            numList.add(line[i]);
+        }
+        for (int i=1; i<line.length; i+=2) {
+            opList.add(line[i]);
+        }
+        int result = Integer.parseInt(numList.get(0));
+        for (int i=0; i<opList.size(); i++) {
+            result = calculate(result,Integer.parseInt(numList.get(i+1)),opList.get(i));
+        }
+        System.out.println(result);
+    }
+
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         String value = scanner.nextLine();
         String[] values = value.split(" ");
-        int num1, num2;
-        int result = 0;
-        String op = "";
-        for (int i = 2; i < values.length; i+=2) {
-            if (i == 2) {
-                num1 = Integer.parseInt(values[i-2]);
-                num2 = Integer.parseInt(values[i]);
-                op = values[i-1];
-                result = calculate(num1, num2, op);
-            }
-            else {
-                num1 = result;
-                num2 = Integer.parseInt(values[i]);
-                op = values[i-1];
-                result = calculate(num1, num2, op);
-            }
-        }
-        System.out.println(result);
+        calculator(values);
         scanner.close();
-
-
-
     }
 
 }
