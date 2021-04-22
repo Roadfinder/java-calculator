@@ -18,17 +18,17 @@ public class StringCalculator {
 
     public int calculateStr(String input){
         String[] inputSplit = input.split(" ");
-        System.out.println(Arrays.toString(inputSplit));
+        //System.out.println(Arrays.toString(inputSplit));
         int number = Integer.parseInt(inputSplit[0]);
         for(int i = 0; i < inputSplit.length - 2; i += 2){
-            System.out.println("operator -> "+inputSplit[i+1].charAt(0));
+            //System.out.println("operator -> "+inputSplit[i+1].charAt(0));
             number = calculate(number, inputSplit[i+1].charAt(0), Integer.parseInt(inputSplit[i+2]));
         }
         return number;
     }
 
     public int calculate(int firstFactor, char operator, int secondFactor) {
-        System.out.println("calculating -> " + firstFactor + operator + secondFactor);
+        //System.out.println("calculating -> " + firstFactor + operator + secondFactor);
         if (operator == '+')
             return add(firstFactor,secondFactor);
         if (operator == '-')
