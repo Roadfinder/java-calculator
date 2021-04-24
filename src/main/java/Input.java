@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class Input {
-    public static final String BLANK = " ";
+    private static final String BLANK = " ";
 
-    public static String getInput() {
+    public static String inputExpression() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }

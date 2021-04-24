@@ -8,18 +8,18 @@ public class Main {
 
     public static void runCalculate() {
         Calculator calculator = new Calculator();
-        String[] lineForCalculate = getStream();
+        String[] lineForCalculate = getFormattedInput();
         try {
             Output.printOutput(calculator.execute(lineForCalculate));
         }
         catch (Exception e){
-            Output.printError(e);
+            Output.printOutputError(e);
             runCalculate();
         }
     }
 
-    public static String[] getStream() {
-        String line = Input.getInput();
+    public static String[] getFormattedInput() {
+        String line = Input.inputExpression();
         String[] splittedLine = Input.split(line);
         return splittedLine;
     }

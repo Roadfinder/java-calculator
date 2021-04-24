@@ -2,16 +2,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    static private final String ADD_OPERATION = "+";
-    static private final String SUBTRACT_OPERATION = "-";
-    static private final String MULTIPLY_OPERATION = "*";
-    static private final String DIVIDE_OPERATION = "/";
-    static private final int NUMBER_INDEX = 0;
-    static private final int OPERATION_INDEX = 1;
+    private static final String ADD_OPERATION = "+";
+    private static final String SUBTRACT_OPERATION = "-";
+    private static final String MULTIPLY_OPERATION = "*";
+    private static final String DIVIDE_OPERATION = "/";
+    private static final int NUMBER_INDEX = 0;
+    private static final int OPERATION_INDEX = 1;
 
-    List<String> numberList = new ArrayList<>();
-    List<String> operationList = new ArrayList<>();
-    int result = 0;
+    private List<String> numberList = new ArrayList<>();
+    private List<String> operationList = new ArrayList<>();
+    private int result = 0;
 
     public int operation(int firstNumber, int secondNumber, String operation) {
         switch (operation) {
@@ -44,21 +44,19 @@ public class Calculator {
         return result;
     }
 
-    public void validation(String line[]) {
-        if (line.length%2 == 0) throw new RuntimeException("올바른 식을 완성해주세요.");
+    private void validation(String[] formattedInput) {
+        if (formattedInput.length%2 == 0) throw new RuntimeException("올바른 식을 완성해주세요.");
     }
 
-    public void addNumberList(String line[]) {
-        for (int i = NUMBER_INDEX; i < line.length; i += 2) {
-            numberList.add(line[i]);
+    private void addNumberList(String[] formattedInput) {
+        for (int i = NUMBER_INDEX; i < formattedInput.length; i += 2) {
+            numberList.add(formattedInput[i]);
         }
     }
 
-    public void addOperationList(String line[]) {
-        for (int i = OPERATION_INDEX; i < line.length; i += 2) {
-            operationList.add(line[i]);
+    private void addOperationList(String[] formattedInput) {
+        for (int i = OPERATION_INDEX; i < formattedInput.length; i += 2) {
+            operationList.add(formattedInput[i]);
         }
     }
-
-
 }
