@@ -3,6 +3,16 @@ apply plugin: 'eclipse'
 
 version = '1.0.0'
 sourceCompatibility = 1.8
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
 
 repositories {
     mavenCentral()
@@ -16,3 +26,4 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
