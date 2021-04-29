@@ -15,8 +15,8 @@ public class test {
     public void successTest() throws Exception {
         String value = "5 + 3 * 4 / 2";
         String[] values = value.split(" ");
-
-        assertThat(Preprocessing.classify(values)).isEqualTo(16);
+        Preprocessing pretest = new Preprocessing();
+        assertThat(pretest.classify(values)).isEqualTo(16);
     }
 
 
@@ -26,9 +26,9 @@ public class test {
         String errorValue = "2 + 3 * 4 / ";
 
         String[] errorValues = errorValue.split(" ");
-
+        Preprocessing pretest = new Preprocessing();
         assertThatThrownBy(() -> {
-            Preprocessing.classify(errorValues);
+            pretest.classify(errorValues);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("잘못된 연산입니다. 다시 입력하세요.");
 
@@ -38,16 +38,14 @@ public class test {
     @Test
     @DisplayName("에러_잘못된_연산자")
     public void wrong_input_value() {
-
         String errorValue = "2 + 3 _ 4";
         String[] errorValues = errorValue.split(" ");
+        Preprocessing pretest = new Preprocessing();
         assertThatThrownBy(() -> {
-            Preprocessing.classify(errorValues);
+            pretest.classify(errorValues);
         }).isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("올바르지 않는 연산자입니다.");
     }
-
-
 
 
 }
