@@ -1,8 +1,11 @@
 public class Main {
     public static void main(String[] args) {
 
-        String[] values = Input.input();
-        int result = Preprocessing.classify(values);
+        Input i1 = new Input();
+        String[] values = i1.input();
+
+        Preprocessing pre = new Preprocessing();
+        int result = pre.classify(values);
         //결과값 출력
         System.out.println(result);
     }
